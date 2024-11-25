@@ -1,0 +1,50 @@
+/* Menu lateral */
+nav {
+    position: relative;
+    border-right: 30px dotted black;
+    width: 100%; 
+    height: 170px;
+}
+
+.donav {
+    list-style: none;
+    padding: 0; 
+    margin: 0; 
+}
+
+/* Corpo */
+main {
+    position: relative;
+    background-color: rgb(245, 245, 245);
+    width: 70vw;
+    height: 70vh; 
+    max-width: 100%; 
+}
+
+code {
+    display: flex;
+    background-color: white;
+    border: 1px dotted grey;
+    justify-content: center;
+    padding: 8px; 
+}
+
+/* Títulos */
+.titulo {
+    border-bottom: 1px dotted grey;
+    margin-bottom: 8px; 
+}
+
+.semborda {
+    border-bottom: none;
+}
+
+/* Links */
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(0, 60, 255);
+}
