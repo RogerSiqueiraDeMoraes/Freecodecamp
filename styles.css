@@ -1,51 +1,64 @@
-
-/* Menu lateral */
-nav {
-    position: relative;
-    border-right: 30px dotted black;
-    width: 100%; 
-    height: 170px;
-}
-
-.donav {
-    list-style: none;
-    padding: 0; 
-    margin: 0; 
-}
-
-/* Corpo */
-main {
-    position: relative;
-    background-color: rgb(245, 245, 245);
-    width: 70vw;
-    height: 70vh; 
-    max-width: 100%; 
-}
-
-code {
-    display: flex;
+body {
     background-color: white;
-    border: 1px dotted grey;
-    justify-content: center;
-    padding: 8px; 
+}
+/* main */
+#main-doc {
+    display: block;
+    width: 90%;
+    height: auto;
+    background-color: #F9F7F7;
+    margin-left: auto;
+    padding-left: 50px;
+    padding-right: 50px;
+
+
+}
+/* titulos */
+.textdest{
+    font-weight: bolder;
+}
+header{
+    border-bottom: 1px dotted black;
+    font-size: 1.5rem;
+    color: #112D4E;
 }
 
-/* Títulos */
-.titulo {
-    border-bottom: 1px dotted grey;
-    margin-bottom: 8px; 
+.tit {
+    border-bottom: 1px dotted black;
+    font-size: 1.5rem;
+    color: #112D4E;
 }
-
-.semborda {
-    border-bottom: none;
+.subtit {
+    font-size: 1.2rem;
+    color: #3F72AF;
 }
-
-/* Links */
-a {
+/* texto */
+p{
     color: black;
-    text-decoration: none;
+}
+/* links */
+a {
+    text-decoration:none ;
+    color: #3F72AF;
+}
+a:hover {
+    text-decoration:none ;
+    color: #112D4E;
+}
+/*seção*/
+
+/*codigos*/
+code { 
+    display: block;
+    border: 1px dotted black;
+    background-color: white;
+    width: 100%;
+}
+/*notas*/
+.note {
+    display: block;
+    border: 1px solid grey;
+    padding: 2px;
+    
 }
 
-a:hover {
-    color: rgb(0, 60, 255);
-}
