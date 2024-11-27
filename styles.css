@@ -1,64 +1,107 @@
+@media (min-width: 1024px) {
+    body {
+        flex-direction: row; 
+    }
+}
+/* Estilo do Corpo */
 body {
     background-color: white;
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
-/* main */
+
+/* Main Content */
 #main-doc {
     display: block;
     width: 90%;
-    height: auto;
     background-color: #F9F7F7;
-    margin-left: auto;
-    padding-left: 50px;
-    padding-right: 50px;
-
-
+    margin: 20px auto;
+    padding: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-/* titulos */
-.textdest{
-    font-weight: bolder;
+
+/* Navegação */
+nav {
+    display: block;
+    width: 200px;
+    color: black;
 }
-header{
+
+.nav-link {
+    display: inline-block;
+    height: 50px;
+    width: 100%;
+    background-color: #F9F7F7;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 50px;
+}
+
+/* Títulos */
+header {
     border-bottom: 1px dotted black;
     font-size: 1.5rem;
     color: #112D4E;
+    margin-bottom: 10px;
 }
 
 .tit {
     border-bottom: 1px dotted black;
     font-size: 1.5rem;
     color: #112D4E;
+    margin-bottom: 10px;
 }
+
 .subtit {
     font-size: 1.2rem;
     color: #3F72AF;
+    margin-bottom: 10px;
 }
-/* texto */
-p{
+
+/* Texto */
+p {
     color: black;
+    line-height: 1.6;
+    margin-bottom: 10px;
 }
-/* links */
+
+/* Links */
 a {
-    text-decoration:none ;
+    text-decoration: none;
     color: #3F72AF;
+    transition: color 0.3s;
 }
+
 a:hover {
-    text-decoration:none ;
     color: #112D4E;
 }
-/*seção*/
 
-/*codigos*/
-code { 
+/* Seção de Códigos */
+code {
     display: block;
     border: 1px dotted black;
-    background-color: white;
-    width: 100%;
+    background-color: #FFFFFF;
+    padding: 10px;
+    margin-bottom: 10px;
+    overflow-x: auto;
+    white-space: pre-wrap;
 }
-/*notas*/
+
+/* Notas */
 .note {
     display: block;
     border: 1px solid grey;
-    padding: 2px;
-    
+    padding: 10px;
+    background-color: #F9F9F9;
+    margin-bottom: 20px;
+    font-style: italic;
+    color: #555;
 }
 
+/* Destaques no Texto */
+.textdest {
+    font-weight: bold;
+    color: #3F72AF;
+}

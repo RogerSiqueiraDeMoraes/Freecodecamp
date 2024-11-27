@@ -1,159 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>PHP Syntax Guide</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Barra Lateral De Navegação-->
-    <nav id="navbar"  aria-label="Main navigation">
-        <header>Basic syntax</header>
+    <!-- Barra Lateral de Navegação -->
+    <nav id="navbar" aria-label="Main navigation">
+        <header>Basic Syntax</header>
+        <ul>
+            <li><a href="#PHP_Basic_Syntax" class="nav-link">PHP Basic Syntax</a></li>
+            <li><a href="#PHP_tags" class="nav-link">PHP Tags</a></li>
+            <li><a href="#Escaping_from_HTML" class="nav-link">Escaping from HTML</a></li>
+            <li><a href="#Instruction_separation" class="nav-link">Instruction Separation</a></li>
+            <li><a href="#Comments" class="nav-link">Comments</a></li>
+        </ul>
     </nav>
-    <!-- Barra Lateral De Navegação-->
+
+    <!-- Conteúdo Principal -->
     <main id="main-doc">
+        <!-- Seção: Basic Syntax -->
         <section class="main-section" id="PHP_Basic_Syntax">
             <header>PHP Basic Syntax</header>
-            <h1 class="tit">Basic syntax</h1>
+            <h1 class="tit">Basic Syntax</h1>
             <h2 class="tit subtit">Table of Contents</h2>
             <ul>
-                <li><a href="#PHP_tags">PHP tags</a></li>
+                <li><a href="#PHP_tags">PHP Tags</a></li>
                 <li><a href="#Escaping_from_HTML">Escaping from HTML</a></li>
-                <li><a href="#Instruction_separation">Instruction separation</a></li>
+                <li><a href="#Instruction_separation">Instruction Separation</a></li>
                 <li><a href="#Comments">Comments</a></li>
-                <li style="list-style: none">.</li>
+                <li style="visibility: hidden; text-overflow:inherit;"></li>
             </ul>
         </section>
-        <!-- As tags de php-->
+
+        <!-- Seção: PHP Tags -->
         <section class="main-section" id="PHP_tags">
-            <header>PHP tags</header>
-
-        </section>
-        <!-- As tags de php-->
-        <p>When PHP parses a file, it looks for opening and closing tags, which are &lt;?php and ?> which tell PHP to start and stop interpreting the code between them. Parsing in this manner allows PHP to be embedded in all sorts of different documents, as everything outside of a pair of opening and closing tags is ignored by the PHP parser.</p>
-        <p>PHP includes a short echo tag &lt;?= which is a short-hand to the more verbose &lt;?php echo.</p>
-        <h4 class="textdest">Example #1 PHP Opening and Closing Tags</h4>
-        <pre><code>
-            <ol>
-                <li>&lt;?php echo 'if you want to serve PHP code in XHTML or XML documents,
-                    use these tags'; ?></li>
-                <li>  You can use the short echo tag to &lt;?= 'print this string' ?>.
-                    It's equivalent to &lt;?php echo 'print this string' ?></li>
-                <li>&lt;? echo 'this code is within short tags, but will only work '.
-                    'if short_open_tag is enabled'; ?></li>
-
-            </ol>
-        </code></pre>
-        <p>Short tags (example three) are available by default but can be disabled either via the short_open_tag php.ini configuration file directive, or are disabled by default if PHP is built with the --disable-short-tags configuration.</p>
-        <div class="note">
-            <h4 class="textdest">Note:</h4>  
-            <p>As short tags can be disabled it is recommended to only use the normal tags (&lt;?php ?> and &lt;?= ?>) to maximise compatibility.</p>
-        </div>
-        <p>If a file contains only PHP code, it is preferable to omit the PHP closing tag at the end of the file. This prevents accidental whitespace or new lines being added after the PHP closing tag, which may cause unwanted effects because PHP will start output buffering when there is no intention from the programmer to send any output at that point in the script.</p>
-        <pre><code>
-    &lt;?php
-    echo "Hello world";
-
-    // ... more code
-
-    echo "Last statement";
-
-    // the script ends here with no PHP closing tag
-        </code></pre>
-        <!--Escapando do html-->
-        <section class="main-section" id="Escaping_from_HTML">
-            <header>Escaping from HTML</header>
-            <p>Everything outside of a pair of opening and closing tags is ignored by the PHP parser which allows PHP files to have mixed content. This allows PHP to be embedded in HTML documents, for example to create templates.</p>
+            <header>PHP Tags</header>
+            <p>
+                When PHP parses a file, it looks for opening and closing tags, which are &lt;?php and ?>, 
+                telling PHP to start and stop interpreting the code. Parsing in this way allows PHP to be embedded 
+                in various documents, as everything outside these tags is ignored by the parser.
+            </p>
+            <p>PHP includes a short echo tag &lt;?=, which is shorthand for &lt;?php echo.</p>
+            <h4 class="textdest">Example #1 PHP Opening and Closing Tags</h4>
             <pre><code>
-    &lt;p>This is going to be ignored by PHP and displayed by the browser.&lt;/p>
-    &lt;?php echo 'While this is going to be parsed.'; ?>
-    &lt;p>This will also be ignored by PHP and displayed by the browser.&lt;/p>
-                    </code></pre>
-<p>This works as expected, because when the PHP interpreter hits the ?> closing tags, it simply starts outputting whatever it finds (except for the immediately following newline - see instruction separation) until it hits another opening tag unless in the middle of a conditional statement in which case the interpreter will determine the outcome of the conditional before making a decision of what to skip over. See the next example.<br></br>
-    Using structures with conditions.</p>
-    <h4 class="textdest">Example #1 Advanced escaping using conditions</h4>
-    <pre><code>
-    &lt;?php if ($expression == true): ?>
-    This will show if the expression is true.
-    &lt;?php else: ?>
-    Otherwise this will show.
-    &lt;?php endif; ?>
-    </code></pre>
-    <p>In this example PHP will skip the blocks where the condition is not met, even though they are outside of the PHP open/close tags; PHP skips them according to the condition since the PHP interpreter will jump over blocks contained within a condition that is not met.
-        For outputting large blocks of text, dropping out of PHP parsing mode is generally more efficient than sending all of the text through echo or print.</p>
-    <div class="note">
-        <h4 class="textdest">Note:</h4>  
-        <p>If PHP is embeded within XML or XHTML the normal PHP &lt;?php ?> must be used to remain compliant with the standards.</p>
-    </div>
-
-        </section>
-        <!--Escapando do html-->
-        <section class="main-section" id="Instruction_separation">
-            <header>Instruction separation</header>
-            <p>As in C or Perl, PHP requires instructions to be terminated with a semicolon at the end of each statement. The closing tag of a block of PHP code automatically implies a semicolon; you do not need to have a semicolon terminating the last line of a PHP block. The closing tag for the block will include the immediately trailing newline if one is present.</p>
-            <h4 class="textdest">Example #1 Example showing the closing tag encompassing the trailing newline</h4>
-            <pre><code>
-                &lt;?php echo "Some text"; ?>
-                No newline
-                &lt;?= "But newline now" ?>
-                </code></pre>
-            <p>The above example will output:</p>
-            <pre><code>
-                Some textNo newline
-                But newline now
+&lt;?php echo 'Use these tags to serve PHP code in XHTML or XML documents'; ?>
+You can use the short echo tag to &lt;?= 'print this string' ?>.
+It's equivalent to &lt;?php echo 'print this string' ?>
+&lt;? echo 'Short tags work if short_open_tag is enabled'; ?>
             </code></pre>
-            <p>Examples of entering and exiting the PHP parser:</p>
-            <pre><code>
-            &lt;?php
-            echo 'This is a test';
-            ?>
-            
-            &lt;?php echo 'This is a test' ?>
-            
-            &lt;?php echo 'We omitted the last closing tag';
-            </code></pre>
+            <p>
+                Short tags are enabled by default but can be disabled via the `short_open_tag` directive in php.ini. 
+                For compatibility, it's recommended to use the standard tags (&lt;?php ?> and &lt;?= ?>).
+            </p>
             <div class="note">
-                <h4 class="textdest">Note:</h4>  
-                <p>The closing tag of a PHP block at the end of a file is optional, and in some cases omitting it is helpful when using include or require, so unwanted whitespace will not occur at the end of files, and you will still be able to add headers to the response later. It is also handy if you use output buffering, and would not like to see added unwanted whitespace at the end of the parts generated by the included files.</p>
+                <h4 class="textdest">Note:</h4>
+                <p>
+                    If a file contains only PHP code, it's better to omit the closing PHP tag at the end of the file 
+                    to prevent accidental whitespace or new lines that could cause unwanted effects.
+                </p>
             </div>
         </section>
-         <!--Comentários-->
+
+        <!-- Seção: Escaping from HTML -->
+        <section class="main-section" id="Escaping_from_HTML">
+            <header>Escaping from HTML</header>
+            <p>
+                Everything outside PHP tags is ignored by the parser, allowing PHP to be embedded in HTML documents 
+                to create templates. For example:
+            </p>
+            <pre><code>
+&lt;p>This is ignored by PHP.&lt;/p>
+&lt;?php echo 'This is parsed.'; ?>
+&lt;p>This is also ignored.&lt;/p>
+            </code></pre>
+            <p>
+                Using structures with conditions allows for more complex output handling:
+            </p>
+            <h4 class="textdest">Example #2 Escaping with Conditions</h4>
+            <pre><code>
+&lt;?php if ($expression == true): ?>
+This shows if true.
+&lt;?php else: ?>
+This shows otherwise.
+&lt;?php endif; ?>
+            </code></pre>
+            <div class="note">
+                <h4 class="textdest">Note:</h4>
+                <p>For XML or XHTML, always use the standard PHP tags (&lt;?php ?>).</p>
+            </div>
+        </section>
+
+        <!-- Seção: Instruction Separation -->
+        <section class="main-section" id="Instruction_separation">
+            <header>Instruction Separation</header>
+            <p>
+                PHP statements must end with a semicolon (;). The closing PHP tag automatically includes a semicolon 
+                for the last line of a PHP block.
+            </p>
+            <h4 class="textdest">Example #3 Instruction Separation</h4>
+            <pre><code>
+&lt;?php echo "Text with no newline"; ?>
+No newline
+&lt;?= "Now with newline" ?>
+            </code></pre>
+            <p>Output:</p>
+            <pre><code>
+Text with no newlineNo newline
+Now with newline
+            </code></pre>
+            <div class="note">
+                <h4 class="textdest">Note:</h4>
+                <p>
+                    Omitting the closing PHP tag is helpful to prevent unwanted whitespace and ensure better integration 
+                    when including or requiring files.
+                </p>
+            </div>
+        </section>
+
+        <!-- Seção: Comments -->
         <section class="main-section" id="Comments">
             <header>Comments</header>
-            <p>PHP supports 'C', 'C++' and Unix shell-style (Perl style) comments. For example:</p>
+            <p>
+                PHP supports 'C', 'C++', and Unix shell-style comments. Examples:
+            </p>
             <pre><code>
-                &lt;?php
-                echo 'This is a test'; // This is a one-line c++ style comment
-                /* This is a multi line comment
-                   yet another line of comment */
-                echo 'This is yet another test';
-                echo 'One Final Test'; # This is a one-line shell-style comment
-            ?>
-                </code></pre>
-                <p>&lt;?php
-                    echo 'This is a test'; // This is a one-line c++ style comment
-                    /* This is a multi line comment
-                       yet another line of comment */
-                    echo 'This is yet another test';
-                    echo 'One Final Test'; # This is a one-line shell-style comment
-                ?></p>
-                <pre><code>
-                    &lt;h1>This is an &lt;?php # echo 'simple';?> example&lt;/h1>
-                    &lt;p>The header above will say 'This is an  example'.&lt;/p>
-                    </code></pre>
-                    <p>'C' style comments end at the first */ encountered. Make sure you don't nest 'C' style comments. It is easy to make this mistake if you are trying to comment out a large block of code.</p>
-                    <pre><code>
-                        &lt;?php
-                        /*
-                           echo 'This is a test'; /* This comment will cause a problem */
-                        */
-                       ?>
-                        </code></pre>
-
+&lt;?php
+// C++ style comment
+/* Multi-line comment */
+# Unix shell-style comment
+?>
+            </code></pre>
+            <p>
+                Avoid nesting 'C'-style comments as it causes errors:
+            </p>
+            <pre><code>
+&lt;?php
+/*
+   echo 'Test'; /* Nested comment causing an error */
+*/
+?>
+            </code></pre>
         </section>
-         <!--Comentários-->
-        
     </main>
 </body>
 </html>
